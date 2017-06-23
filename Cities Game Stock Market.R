@@ -5,7 +5,7 @@ re <- 1.5 #resources
 se <- .7 #services
 fd <- 1.2 #foodstuffs
 #Sector Health (Affects Drift): 
-reh <- 1.2 #resources
+reh <- 1.5 #resources
 seh <- 1.5 #services
 fdh <- 1 #foodstuffs
 #Nations Stability (Affects Volatility):
@@ -39,9 +39,7 @@ NMbm <- c(0,cumsum(NMrv))
 NMxproc <- mu*seq(0,t,t/n) + NMsig*NMbm
 NMgbm <- (NMG0)*exp(NMxproc)
 steps <- seq(0,t,length=n+1)
-NMbm1 <- sum(NMrv)
-NMxproc1 <- NMmu*(t) + NMsig*NMbm1
-NMgbm1 <- (NMG0)*exp(NMxproc1) 
+NMgbm1 <- NMgbm[length(NMgbm)]
 NMgbm1
 
 SNLG0 <- 80 #starting price
@@ -52,9 +50,7 @@ SNLbm <- c(0,cumsum(SNLrv))
 SNLxproc <- mu*seq(0,t,t/n) + SNLsig*SNLbm
 SNLgbm <- (SNLG0)*exp(SNLxproc)
 steps <- seq(0,t,length=n+1)
-SNLbm1 <- sum(SNLrv)
-SNLxproc1 <- SNLmu*(t) + SNLsig*SNLbm1
-SNLgbm1 <- (SNLG0)*exp(SNLxproc1) 
+SNLgbm1 <- SNLgbm[length(SNLgbm)]
 SNLgbm1
 
 NASG0 <- 80 #starting price
@@ -65,9 +61,7 @@ NASbm <- c(0,cumsum(NASrv))
 NASxproc <- mu*seq(0,t,t/n) + NASsig*NASbm
 NASgbm <- (NASG0)*exp(NASxproc)
 steps <- seq(0,t,length=n+1)
-NASbm1 <- sum(NASrv)
-NASxproc1 <- NASmu*(t) + NASsig*NASbm1
-NASgbm1 <- (NASG0)*exp(NASxproc1) 
+NASgbm1 <- NASgbm[length(NASgbm)]
 NASgbm1
 
 UHNG0 <- 80 #starting price
@@ -78,9 +72,7 @@ UHNbm <- c(0,cumsum(UHNrv))
 UHNxproc <- mu*seq(0,t,t/n) + UHNsig*UHNbm
 UHNgbm <- (UHNG0)*exp(UHNxproc)
 steps <- seq(0,t,length=n+1)
-UHNbm1 <- sum(UHNrv)
-UHNxproc1 <- UHNmu*(t) + UHNsig*UHNbm1
-UHNgbm1 <- (UHNG0)*exp(UHNxproc1) 
+UHNgbm1 <- UHNgbm[length(UHNgbm)]
 UHNgbm1
 
 mean(NMgbm1,SNLgbm1,NASgbm1,UHNgbm1) #average stock price
@@ -100,9 +92,7 @@ IGbm <- c(0,cumsum(IGrv))
 IGxproc <- mu*seq(0,t,t/n) + IGsig*IGbm
 IGgbm <- (IGG0)*exp(IGxproc)
 steps <- seq(0,t,length=n+1)
-IGbm1 <- sum(IGrv)
-IGxproc1 <- IGmu*(t) + IGsig*IGbm1
-IGgbm1 <- (IGG0)*exp(IGxproc1) 
+IGgbm1 <- IGgbm[length(IGgbm)]
 IGgbm1
 
 GCG0 <- 80 #starting price
@@ -113,9 +103,7 @@ GCbm <- c(0,cumsum(GCrv))
 GCxproc <- mu*seq(0,t,t/n) + GCsig*GCbm
 GCgbm <- (GCG0)*exp(GCxproc)
 steps <- seq(0,t,length=n+1)
-GCbm1 <- sum(GCrv)
-GCxproc1 <- GCmu*(t) + GCsig*GCbm1
-GCgbm1 <- (GCG0)*exp(GCxproc1) 
+GCgbm1 <- GCgbm[length(GCgbm)]
 GCgbm1
 
 ICG0 <- 80 #starting price
@@ -126,9 +114,7 @@ ICbm <- c(0,cumsum(ICrv))
 ICxproc <- mu*seq(0,t,t/n) + ICsig*ICbm
 ICgbm <- (ICG0)*exp(ICxproc)
 steps <- seq(0,t,length=n+1)
-ICbm1 <- sum(ICrv)
-ICxproc1 <- ICmu*(t) + ICsig*ICbm1
-ICgbm1 <- (ICG0)*exp(ICxproc1) 
+ICgbm1 <- IGgbm[length(ICgbm)]
 ICgbm1
 
 UHIG0 <- 80 #starting price
@@ -139,9 +125,7 @@ UHIbm <- c(0,cumsum(UHIrv))
 UHIxproc <- mu*seq(0,t,t/n) + UHIsig*UHIbm
 UHIgbm <- (UHIG0)*exp(UHIxproc)
 steps <- seq(0,t,length=n+1)
-UHIbm1 <- sum(UHIrv)
-UHIxproc1 <- UHImu*(t) + UHIsig*UHIbm1
-UHIgbm1 <- (UHIG0)*exp(UHIxproc1) 
+UHIgbm1 <- UHIgbm[length(UHIgbm)]
 UHIgbm1
 
 
@@ -159,9 +143,7 @@ FIbm <- c(0,cumsum(FIrv))
 FIxproc <- mu*seq(0,t,t/n) + FIsig*FIbm
 FIgbm <- (FIG0)*exp(FIxproc)
 steps <- seq(0,t,length=n+1)
-FIbm1 <- sum(FIrv)
-FIxproc1 <- FImu*(t) + FIsig*FIbm1
-FIgbm1 <- (FIG0)*exp(FIxproc1) 
+FIgbm1 <- FIgbm[length(FIgbm)]
 FIgbm1
 
 SSSG0 <- 80 #starting price
@@ -172,9 +154,7 @@ SSSbm <- c(0,cumsum(SSSrv))
 SSSxproc <- mu*seq(0,t,t/n) + SSSsig*SSSbm
 SSSgbm <- (SSSG0)*exp(SSSxproc)
 steps <- seq(0,t,length=n+1)
-SSSbm1 <- sum(SSSrv)
-SSSxproc1 <- SSSmu*(t) + SSSsig*SSSbm1
-SSSgbm1 <- (SSSG0)*exp(SSSxproc1) 
+SSSgbm1 <- SSSgbm[length(SSSgbm)]
 SSSgbm1
 
 PMG0 <- 80 #starting price
@@ -185,9 +165,7 @@ PMbm <- c(0,cumsum(PMrv))
 PMxproc <- mu*seq(0,t,t/n) + PMsig*PMbm
 PMgbm <- (PMG0)*exp(PMxproc)
 steps <- seq(0,t,length=n+1)
-PMbm1 <- sum(PMrv)
-PMxproc1 <- PMmu*(t) + PMsig*PMbm1
-PMgbm1 <- (PMG0)*exp(PMxproc1) 
+PMgbm1 <- PMgbm[length(PMgbm)]
 PMgbm1
 
 #VPM (Valkian Public Metal Trade)
@@ -203,9 +181,7 @@ VIObm <- c(0,cumsum(VIOrv))
 VIOxproc <- mu*seq(0,t,t/n) + VIOsig*VIObm
 VIOgbm <- (VIOG0)*exp(VIOxproc)
 steps <- seq(0,t,length=n+1)
-VIObm1 <- sum(VIOrv)
-VIOxproc1 <- VIOmu*(t) + VIOsig*VIObm1
-VIOgbm1 <- (VIOG0)*exp(VIOxproc1) 
+VIOgbm1 <- VIOgbm[length(VIOgbm)]
 VIOgbm1
 
 VJGG0 <- 80 #starting price
@@ -216,9 +192,7 @@ VJGbm <- c(0,cumsum(VJGrv))
 VJGxproc <- mu*seq(0,t,t/n) + VJGsig*VJGbm
 VJGgbm <- (VJGG0)*exp(VJGxproc)
 steps <- seq(0,t,length=n+1)
-VJGbm1 <- sum(VJGrv)
-VJGxproc1 <- VJGmu*(t) + VJGsig*VJGbm1
-VJGgbm1 <- (VJGG0)*exp(VJGxproc1) 
+VJGgbm1 <- VJGgbm[length(VJGgbm)]
 VJGgbm1
 
 VDCG0 <- 80 #starting price
@@ -229,9 +203,7 @@ VDCbm <- c(0,cumsum(VDCrv))
 VDCxproc <- mu*seq(0,t,t/n) + VDCsig*VDCbm
 VDCgbm <- (VDCG0)*exp(VDCxproc)
 steps <- seq(0,t,length=n+1)
-VDCbm1 <- sum(VDCrv)
-VDCxproc1 <- VDCmu*(t) + VDCsig*VDCbm1
-VDCgbm1 <- (VDCG0)*exp(VDCxproc1) 
+VDCgbm1 <- VDCgbm[length(VDCgbm)]
 VDCgbm1
 
 #NU10 Plot
@@ -295,7 +267,7 @@ plot(steps,VDCgbm,type="l",ylim=range(c(0,max(VIOgbm,VJGgbm,VDCgbm))),col="gold"
 legend('topleft', legend=c("Valkian Iron and Ores","Vulcan Jewels and Gems","Valkian Defense Contracting") , 
        lty=1, col=c('blue', 'red', 'gold',' black'), bty='n', cex=.75)
 abline(h =VIOgbm1,lty=2)
-abline(h =VJGgbm1,lty=2)
+abline(h =VJGgbm1,lty=2) 
 abline(h =VDCgbm1,lty=2)
 
 abline(h=mean(c(VIOgbm,VJGgbm,VDCgbm)))
